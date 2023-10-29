@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: $SLUG-config
+data:
+  STAGE: $STAGE
+  NAME: $SLUG
