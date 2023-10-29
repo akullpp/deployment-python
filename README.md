@@ -1,12 +1,12 @@
 # Deployment for Python
 
-Opinionated shell scripts for deployment, a lot is based on the repository name and thus the `SLUG` environment variable.
+Opinionated shell scripts for deploying Python.
 
-Assume we have a repository named `foobar-service` and we didn't set `SLUG` by hand.
+A lot is based on the repository name and therefore the `SLUG` environment variable. In the examples, you should assume that we have a repository named `foobar-service` and we didn't set `SLUG` by hand.
 
-Here's the explanation in order of recommended execution:
+Btw, use the excellent [ShellCheck](https://www.shellcheck.net/) to lint your scripts!
 
-## Requirements
+## Build with
 
 - 3.12 <= [Python](https://docs.python.org) < 3.13
 
@@ -19,6 +19,8 @@ Here's the explanation in order of recommended execution:
 - [pip-tools](https://github.com/jazzband/pip-tools)
 
 - [ruff](https://docs.astral.sh/ruff/)
+
+Here's the explanation in order of recommended execution:
 
 ## slug.sh
 
@@ -40,15 +42,15 @@ Then we have the `CONTEXT` for our API which I like to base on the `SLUG`, e.g. 
 
 ## build.sh
 
-Triggers `make`, see `Makefile`.
+Triggers `make`, see `Makefile`, if you don't want to use pip-tools, change it.
 
 ## lint.sh
 
-Triggers `make lint`, see `Makefile`.
+Triggers `make lint`, see `Makefile` for an example. If you don't use ruff, change it.
 
 ## docker.sh
 
-Here we build the docker image and push it to the ECR repository.
+Here we build the docker image and push it to the ECR repository. Have a look at the inlined Dockerfile, and change the `CMD` if you need something different from FastAPI.
 
 It also requires some environment_variables to be set:
 
